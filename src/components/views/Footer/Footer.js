@@ -1,6 +1,6 @@
 const Footer = () => {
     return (
-        <h6>Footer</h6>
+        <h6 className="text-center text-muted">Copyright © BlogApp 20222</h6>
     )
 }
 
