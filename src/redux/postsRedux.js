@@ -1,5 +1,6 @@
 //selectors
 export const getAllPosts = (state) => state.posts;
+export const getPostById = ({ posts }, postId) => posts.find(post => posts.id === postId);
 
 // actions
 // eslint-disable-next-line no-unused-vars
