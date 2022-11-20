@@ -7,8 +7,8 @@ import { removePost } from "../../../redux/postsRedux";
 
 const SinglePost = () => {
 
-    const { postId } = useParams();
-    const postData = useSelector(state => getPostById(state, postId));
+    const { id } = useParams();
+    const postData = useSelector(state => getPostById(state, id));
 
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
@@ -17,6 +17,7 @@ const SinglePost = () => {
     const dispatch = useDispatch();
     const removePostClick = () => {
         dispatch(removePost(postData.id))
+        setShow();
     };
 
     if(!postData) return <Navigate to="/" />;
@@ -36,7 +37,7 @@ const SinglePost = () => {
         </Col>
 
         <Col className="col-3">
-            <Link to={"/post/edit/:id" + postData.id}><Button className="my-3 mx-3" variant="outline-info">Edit</Button></Link>
+            <Link to={"/post/edit/" + postData.id}><Button className="my-3 mx-3" variant="outline-info">Edit</Button></Link>
             <Button onClick={handleShow} variant="outline-danger">Delete</Button>
         </Col>
     </Row>
