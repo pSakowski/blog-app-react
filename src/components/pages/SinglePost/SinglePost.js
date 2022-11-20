@@ -22,7 +22,7 @@ const PostId = () => {
           </Card>
         </Col>
         <Col className="col-3">
-            <Link to={"/post/" + postData.id}><Button className="my-3 mx-3" variant="outline-info">Edit</Button></Link>
+            <Link to={"/post/edit/:id" + postData.id}><Button className="my-3 mx-3" variant="outline-info">Edit</Button></Link>
             <Link to={"/"}><Button variant="outline-danger">Delete</Button></Link>
         </Col>
         </Row>
