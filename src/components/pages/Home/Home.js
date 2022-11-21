@@ -7,11 +7,8 @@ const Home = () => {
     return (
         <>
         <Row>
-            <Col className="col-10">
+            <Col className="d-flex justify-content-between">
             <h1>All posts</h1>
-            </Col>
-
-            <Col className="col-2">
             <Link to="/post/add"><Button className="mb-5" variant="outline-info">Add post</Button></Link>
             </Col>
         </Row>
