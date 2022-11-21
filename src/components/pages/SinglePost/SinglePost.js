@@ -28,7 +28,7 @@ const SinglePost = () => {
         <Col className="col-7">
             <Card className="border-0">
                 <Card.Body>
-                    <Card.Title className=""><h1>{postData.title}</h1></Card.Title>
+                    <Card.Title><h1>{postData.title}</h1></Card.Title>
                     <Card.Text className="my-0"><strong>Author: </strong>{postData.author}</Card.Text>
                     <Card.Text><strong>Published: </strong>{postData.publishedDate}</Card.Text>
                     <Card.Text className="mb-3">{postData.shortDescription}</Card.Text>
