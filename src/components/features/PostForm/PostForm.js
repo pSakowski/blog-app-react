@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { Button, Col, Form, FormGroup, Row } from "react-bootstrap";
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 
 const PostForm = ({ action, actionText, ...props }) => {
 
@@ -25,9 +27,10 @@ const PostForm = ({ action, actionText, ...props }) => {
                 <Form.Label>Published</Form.Label>
                 <Form.Control value={publishedDate} onChange={e => setPublishedDate(e.target.value)} placeholder="Enter date" />
                 <Form.Label>Short description</Form.Label>
-                <Form.Control value={shortDescription} onChange={e => setShortDescription(e.target.value)} placeholder="Leave a comment here" style={{ width: "360px", height: "100px" }}/>
+                <Form.Control value={shortDescription} onChange={e => setShortDescription(e.target.value)} placeholder="Leave a comment here" style={{ width: "400px", height: "100px" }}/>
                 <Form.Label>Main content</Form.Label>
-                <Form.Control value={content} onChange={e => setContent(e.target.value)} placeholder="Leave a comment here" style={{ width: "360px", height: "200px" }}/>
+                {/* <Form.Control value={content} onChange={e => setContent(e.target.value)} placeholder="Leave a comment here" style={{ width: "360px", height: "200px" }}/> */}
+                <ReactQuill theme="snow" value={content} onChange={setContent} placeholder="Leave a comment here" style={{ width: "400px" }}/>
             </FormGroup>
             <Button onClick={handleSubmit} className="my-3">Add post</Button>
         </Col>
