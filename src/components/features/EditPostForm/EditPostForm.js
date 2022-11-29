@@ -17,7 +17,16 @@ const EditPostForm = () => {
      };
      
      return (
-     <PostForm action={handleSubmit} actionText="Edit post" title={postData.title} author={postData.author} publishedDate={postData.publishedDate} description={postData.shortDescription} content={postData.content}></PostForm>
+     <PostForm 
+     action={handleSubmit} 
+     actionText="Edit post" 
+     title={postData.title} 
+     author={postData.author} 
+     publishedDate={postData.publishedDate} 
+     category={postData.category}
+     description={postData.shortDescription} 
+     content={postData.content}>
+     </PostForm>
     )
 }
 

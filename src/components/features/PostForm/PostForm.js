@@ -9,26 +9,47 @@ import "react-datepicker/dist/react-datepicker.css";
 
 import { useForm } from "react-hook-form";
 
+import Select from 'react-select'
+import { useSelector } from "react-redux";
+import { getAllCategories } from "../../../redux/categoriesRedux";
+
 const PostForm = ({ action, actionText, ...props }) => {
 
     const [title, setTitle] = useState(props.title || "");
     const [author, setAuthor] = useState(props.author || "");
-    const [publishedDate, setPublishedDate] = useState(props.publishedDate || "");
     const [shortDescription, setShortDescription] = useState(props.shortDescription || "");
-    const [content, setContent] = useState(props.content || "");
 
+    const [content, setContent] = useState(props.content || "");
     const [contentError, setContentError] = useState(false);
+
+    const [publishedDate, setPublishedDate] = useState(props.publishedDate || "");
     const [dateError, setDateError] = useState(false);
 
-    const { register, handleSubmit: validate, formState: { errors } } = useForm();
+    const categories = useSelector(getAllCategories);
+    const [category, setCategory] = useState(props.category || "");
+    const [categoryError, setCategoryError] = useState(false);
+
+    const { 
+        register, 
+        handleSubmit: validate, 
+        formState: { errors } 
+    } = useForm();
     
     const handleSubmit = () => {
         setContentError(!content);
         setDateError(!publishedDate);
+        setCategoryError(!category);
         if(content && publishedDate) {
-            action({ title, author, publishedDate, shortDescription, content });
+            action({ title, author, publishedDate, shortDescription, content, category });
         }
     };
+
+    const [selectedOption, setSelectedOption] = useState(null);
+    const  options  =  [ 
+        {  wartość : 'czekolada' ,  etykieta : 'Czekolada'  } , 
+        {  wartość : 'truskawka' ,  etykieta : 'Truskawka'  } , 
+        {  wartość : 'wanilia' ,  etykieta : 'wanilia'  } , 
+      ] ;
 
     return (
         <Row className="justify-content-center">
@@ -69,6 +90,32 @@ const PostForm = ({ action, actionText, ...props }) => {
                     </FormGroup>
 
                     <FormGroup>
+                    <Form.Label>Category</Form.Label>
+                        <Select 
+                        value={category}
+                        onChange={e => setCategory(e.target.value)}
+                        >
+                        <option value='' disabled>Select category...</option>
+                        {categories.map((category) => <option key={category} value={category}>{category}</option>
+                        )}
+                        </Select>
+                        {categoryError && <small className="d-block form-text text-danger mt-2">Category can't be empty</small>}
+                    </FormGroup>
+
+                    <FormGroup>
+                    <Form.Label>Category</Form.Label>
+                        <Form.Select 
+                        value={category}
+                        onChange={e => setCategory(e.target.value)}
+                        >
+                        <option value='' disabled>Select category...</option>
+                        {categories.map((category) => <option key={category} value={category}>{category}</option>
+                        )}
+                        </Form.Select>
+                        {categoryError && <small className="d-block form-text text-danger mt-2">Category can't be empty</small>}
+                    </FormGroup>
+
+                    <FormGroup>
                         <Form.Label>Short description</Form.Label>
                         <Form.Control 
                         {...register("shortDescription", { required: true, minLength: 20 })}
@@ -87,7 +134,7 @@ const PostForm = ({ action, actionText, ...props }) => {
                         theme="snow" 
                         value={content} 
                         onChange={setContent} 
-                        placeholder="Leave a comment here" 
+                        placeholder="Leave a comment here"
                         />
                         {contentError && <small className="d-block form-text text-danger mt-2">Content can't be empty</small>}
                     </FormGroup>
