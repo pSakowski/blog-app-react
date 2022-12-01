@@ -1,9 +1,9 @@
 import shortid from "shortid";
 
-
 //selectors
 export const getAllPosts = ({ posts }) => posts;
 export const getPostById = ({ posts }, postId) => posts.find(post => post.id === postId);
+export const getPostByCategory = ({ posts }, categoryId) => posts.filter(post => post.category === categoryId);
 
 // actions
 // eslint-disable-next-line no-unused-vars

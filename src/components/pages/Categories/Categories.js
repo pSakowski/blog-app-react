@@ -1,7 +1,7 @@
 import { Col, Row } from "react-bootstrap";
-import Categories from "../../features/Categories/Categories";
+import Category from "../../features/Category/Category";
 
-const Category = () => {
+const Categories = () => {
 
     return (
         <>
@@ -11,9 +11,9 @@ const Category = () => {
             </Col>
         </Row>
 
-        <Categories />
+        <Category />
         </>
     )
 }
 
-export default Category;
+export default Categories;

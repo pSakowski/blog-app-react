@@ -44,13 +44,6 @@ const PostForm = ({ action, actionText, ...props }) => {
         }
     };
 
-    const [selectedOption, setSelectedOption] = useState(null);
-    const  options  =  [ 
-        {  wartość : 'czekolada' ,  etykieta : 'Czekolada'  } , 
-        {  wartość : 'truskawka' ,  etykieta : 'Truskawka'  } , 
-        {  wartość : 'wanilia' ,  etykieta : 'wanilia'  } , 
-      ] ;
-
     return (
         <Row className="justify-content-center">
             <Col className="col-7">
@@ -89,7 +82,7 @@ const PostForm = ({ action, actionText, ...props }) => {
                         {dateError && <small className="d-block form-text text-danger mt-2">Date can't be empty</small>}
                     </FormGroup>
 
-                    <FormGroup>
+                    {/* <FormGroup>
                     <Form.Label>Category</Form.Label>
                         <Select 
                         value={category}
@@ -100,7 +93,7 @@ const PostForm = ({ action, actionText, ...props }) => {
                         )}
                         </Select>
                         {categoryError && <small className="d-block form-text text-danger mt-2">Category can't be empty</small>}
-                    </FormGroup>
+                    </FormGroup> */}
 
                     <FormGroup>
                     <Form.Label>Category</Form.Label>

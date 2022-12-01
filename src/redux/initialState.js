@@ -15,6 +15,7 @@ const initialState = {
       shortDescription: 'Short description of the article...',
       content: 'Main content of the article',
       publishedDate: new Date('03-03-2022'),
+      category: 'Movies',
       author: 'Marry Jo'
     },
     {
@@ -23,6 +24,7 @@ const initialState = {
       shortDescription: 'Short description of the article...',
       content: 'Main content of the article',
       publishedDate: new Date('04-04-2022'),
+      category: 'Sport',
       author: 'Garry Wo'
     }
   ],
